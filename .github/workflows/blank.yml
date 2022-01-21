@@ -38,3 +38,6 @@ jobs:
           cd google-cloud-sdk
           ./install.sh 
           
+      # Check files
+      - name: to check files and stuff
+        run: ls
