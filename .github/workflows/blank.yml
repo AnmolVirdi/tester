@@ -32,8 +32,9 @@ jobs:
       # Runs a set of commands using the runners shell
       - name: Installing Cloud SDK
         run: |
-          curl -O https://dl.google.com/dl/cloudsdk/channels/rapid/downloads/google-cloud-sdk-251.0.0-linux-x86.tar.gz
-          tar zxvf google-cloud-sdk-251.0.0-linux-x86.tar.gz
+          sudo apt install python3
+          wget http://dl.google.com/dl/cloudsdk/channels/rapid/download/google-cloud-sdk-307.0.0-linux-x86_64.tar.gz
+          tar –xvzf google-cloud-sdk-307.0.0-linux-x86_64.tar.gz
           cd google-cloud-sdk
-          ./google-cloud-sdk/install.sh -n -y
-          gcloud init
+          ./install.sh -n -y
+          
