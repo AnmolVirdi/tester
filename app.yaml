@@ -1,0 +1,96 @@
+runtime: python27
+threadsafe: true
+api_version: 1
+
+handlers: # static then dynamic
+  - url: /favicon\.ico
+    static_files: favicon.ico
+    upload: favicon\.ico
+
+  - url: /slow-spring-board\.mp3
+    static_files: slow-spring-board.mp3
+    upload: slow-spring-board\.mp3
+
+  - url: /sitemap\.xml
+    static_files: sitemap.xml
+    upload: sitemap\.xml
+
+  - url: /jsons
+    static_dir: jsons
+
+  - url: /js
+    static_dir: static/js
+
+  - url: /img
+    static_dir: static/img
+    expiration: "365d"
+
+  - url: /flib
+    static_dir: static/flib
+
+  - url: /css
+    static_dir: static/bootstrap/css
+
+  - url: /fonts
+    static_dir: static/fonts
+    expiration: "365d"
+
+  - url: /partials
+    static_dir: static/partials
+
+  - url: /
+    static_files: templates/index.html
+    upload: templates/index\.html
+    secure: always
+
+  - url: /tasks/send_confirmation_email
+    script: main.app
+
+  - url: /crons/set_announcement
+    script: main.app
+
+  - url: /crons/update_countrydata
+    script: updateCountryData.app
+    login: admin
+
+  - url: /crons/update_countryflags
+    script: updateCountryFlags.app
+    login: admin
+
+  - url: /_ah/api/.*
+    script: projectflux_backend.api
+    secure: always
+
+  - url: /report-inaccuracy
+    script: report_inaccuracy.app
+
+  - url: /api/updateSubscriber
+    script: updateSubscriber.app
+
+  - url: /_ah/queue/deferred
+    script: google.appengine.ext.deferred.deferred.application
+    login: admin
+
+builtins:
+  - deferred: on
+
+libraries:
+  - name: webapp2
+    version: latest
+
+  - name: ssl
+    version: 2.7.11
+
+  - name: endpoints
+    version: latest
+
+  # pycrypto library used for OAuth2 (req'd for authenticated APIs)
+  - name: pycrypto
+    version: 'latest'
+
+env_variables:
+  BUCKET_NAME: 'projectflux71.appspot.com'
+  SERVICE_JSON_FILE: 'geoprageeth721-6c52a32e455c.json'
+  GAE_USE_SOCKETS_HTTPLIB: 'true'
+  ENDPOINTS_SERVICE_NAME: 'projectflux71.appspot.com'
+  ENDPOINTS_SERVICE_VERSION: '2021-12-06r0'

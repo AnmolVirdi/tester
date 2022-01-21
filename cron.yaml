@@ -1,0 +1,13 @@
+cron:
+- description: This is for updating the database everyday with the latest data.
+  url: /crons/update_countrydata
+  schedule: every day 00:00
+  retry_parameters:
+    min_backoff_seconds: 2.5
+    max_doublings: 5
+#- description: This is for updating the database country flags.
+  #url: /crons/update_countryflags
+  #schedule: every day 00:00
+  #retry_parameters:
+    #min_backoff_seconds: 2.5
+    #max_doublings: 5
