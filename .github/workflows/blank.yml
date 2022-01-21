@@ -34,7 +34,7 @@ jobs:
         run: |
           sudo apt install python3
           wget https://dl.google.com/dl/cloudsdk/channels/rapid/downloads/google-cloud-sdk-251.0.0-linux-x86.tar.gz
-          tar –xvzf google-cloud-sdk-251.0.0-linux-x86.tar.gz
+          tar zxvf google-cloud-sdk-251.0.0-linux-x86.tar.gz
           cd google-cloud-sdk
           ./install.sh -n -y
           
