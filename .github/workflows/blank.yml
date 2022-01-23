@@ -38,7 +38,7 @@ jobs:
           cd google-cloud-sdk
           ./install.sh 
           cd ..
-          rm -rp google-cloud-sdk
+          rm -rf google-cloud-sdk
           rm google-cloud-sdk-251.0.0-linux-x86.tar.gz
           
       # Check files
